@@ -9,7 +9,8 @@ class Sample {
   public static double totalPrice(Part[] parts) {
     double total = 0;
     for (Part p : parts)
-      total += p.getPrice(); return total;
+      total += p.getPrice();
+    return total;
   }
   
   // Is there a better way that this one to make sales ?
