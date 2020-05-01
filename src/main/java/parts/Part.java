@@ -1,8 +1,16 @@
 package parts;
 
-public interface Part {
+public abstract class Part {
 
-  static double totalPrice(Part[] parts) {
+  private final Policy policy;
+  private final double originalPrice;
+
+  protected Part(Policy policy, double price) {
+    this.policy = policy;
+    this.originalPrice = price;
+  }
+
+  public static double totalPrice(Part[] parts) {
     double total = 0;
     for (Part part : parts) {
       total += part.getPrice();
@@ -10,6 +18,12 @@ public interface Part {
     return total;
   }
 
-  double getPrice();
+  public double getOriginalPrice() {
+    return originalPrice;
+  }
+
+  public double getPrice() {
+    return policy.price(this);
+  }
 
 }
